@@ -110,4 +110,4 @@ sidecarContainers: []
 #         memory: 100Mi
 #         cpu: 100m
 
-updateConfigurationOnChange: false
+updateConfigurationOnChange: true

@@ -37,7 +37,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["/bin/sh", "-c"]
-          args: ["./config/initialize.sh"]
+          args: ["/qdrant/config/initialize.sh"]
           ports:
           {{- range .Values.service.ports }}
             - name: {{ .name }}
@@ -137,19 +137,22 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .Values.snapshotRestoration.pvcName }}
         {{- end }}
+        - name: qdrant-storage
+          persistentVolumeClaim:
+            claimName: qdrant-volume
 
-  volumeClaimTemplates:
-    - metadata:
-        name: qdrant-storage
-        labels:
-          app: {{ template "qdrant.name" . }}
-      spec:
-        storageClassName: {{ .Values.persistence.storageClassName }} 
-        accessModes:
-        {{- range .Values.persistence.accessModes }}
-          - {{ . | quote }}
-        {{- end }}
-        resources:
-          requests:
-            storage: {{ .Values.persistence.size | quote }} 
+  # volumeClaimTemplates:
+  #   - metadata:
+  #       name: qdrant-storage
+  #       labels:
+  #         app: {{ template "qdrant.name" . }}
+  #     spec:
+  #       storageClassName: {{ .Values.persistence.storageClassName }} 
+  #       accessModes:
+  #       {{- range .Values.persistence.accessModes }}
+  #         - {{ . | quote }}
+  #       {{- end }}
+  #       resources:
+  #         requests:
+  #           storage: {{ .Values.persistence.size | quote }} 
          
