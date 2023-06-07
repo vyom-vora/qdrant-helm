@@ -7,7 +7,7 @@
 ```bash
 helm repo add qdrant https://vyom-vora.github.io/qdrant-helm/
 helm repo update
-helm install qdrant qdrant/qdrant
+helm install er-qdrant qdrant/qdrant
 ```
 ## Delete Qdrant
 ```bash
