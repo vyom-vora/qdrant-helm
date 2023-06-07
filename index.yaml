@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  qdrant:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-07T13:23:12.129675+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 36823889b236b87bff97cf756c06820416e9f99cfc4ca132891cf119824b171a
+    name: qdrant
+    type: application
+    urls:
+    - https://vyom-vora.github.io/qdrant-helm/qdrant-0.2.9.tgz
+    version: 0.2.9
+generated: "2023-06-07T13:23:12.1167526+05:30"
